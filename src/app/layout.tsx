@@ -18,8 +18,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Gamify",
-  description: "Game Your Life Back on Track",
+  title: "Aaron Hong | Portfolio",
+  description: "Aaron Hong - Portfolio Web",
 };
 export default function RootLayout({
   children,
@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} antialiased card-background text-color`}
+        className={`${inter.className} antialiased background text-color`}
       >
         {children}
       </body>

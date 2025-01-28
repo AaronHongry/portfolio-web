@@ -18,10 +18,24 @@
   color: #abcfcd;
 }
 
+.s-bg {
+  background-color: #abcfcd;
+}
+
 .a-color {
   color: #89c2bf;
+}
+
+.aa-color {
+  color: #ddebe9;
+}
+
+.card-color {
+  color: #f3f8f7;
 }
 
 .card-background {
   background-color: #f3f8f7;
 }
+
+
