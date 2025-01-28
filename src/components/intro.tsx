@@ -56,7 +56,10 @@ const Intro = () => {
         <div className="flex flex-row gap-2 h-4/5 px-56">
             <div className="flex flex-col py-32 w-1/2">
                 <div className="flex flex-col gap-3 pt-8">
-                    <h1 className="text-5xl font-bold">Hi there!</h1>
+                    <div className="flex flex-row items-baseline gap-3">
+                        <h1 className="text-5xl font-bold ">Hi there!</h1><h1 className="text-5xl font-bold drop-shadow-md animate-bounce">👋</h1>
+                    </div>
+                    
                     <div className="flex flex-row gap-3">
                         <h1 className="text-7xl font-bold">I'm</h1>
                         <h1 className="text-7xl font-bold p-color">Aaron Hong</h1>
