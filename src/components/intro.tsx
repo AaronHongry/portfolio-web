@@ -26,7 +26,7 @@ const Intro = () => {
             ease: "easeInOut",
             repeat: Infinity,
             repeatType: "reverse",
-            delay: 1.6
+            delay: 1.8
         });
         
         const messages = [
@@ -81,7 +81,7 @@ const Intro = () => {
                 </motion.div>
             </div>
 
-            <motion.div initial={{scale: 0.9, opacity: 0}} animate={{scale: 1, opacity: 1, transition: {opacity: {delay: 1.4}, scale: {delay: 1.35}}}} transition={{ease:"backOut"}} className="flex flex-col gap-3 pt-8 w-1/2 justify-start items-center">
+            <motion.div initial={{scale: 0.9, opacity: 0}} animate={{scale: 1, opacity: 1, transition: {opacity: {delay: 1.8}, scale: {delay: 1.35}}}} transition={{ease:"backOut"}} className="flex flex-col gap-3 pt-8 w-1/2 justify-start items-center">
                 <motion.img transition={{ease: "backOut"}} whileHover={{scale: 1.1}} whileTap={{scale: 1.05}} ref={pfpScope} src="images/pfp.webp" className="w-3/4"/>
             </motion.div>
         </div>

@@ -1,7 +1,7 @@
 "use client"
 
-import { motion, useSpring, AnimatePresence } from "motion/react";
-import { useEffect, useState, } from "react";
+import { motion, useSpring, AnimatePresence, useInView, useAnimate} from "motion/react";
+import { useEffect, useState, useRef } from "react";
 
 
 const AboutMe = () => {
@@ -11,6 +11,11 @@ const AboutMe = () => {
     const [tikCount, setTikCount] = useState(0);
 
     const tikSpring = useSpring(0, {bounce: 0, duration: 3000});
+
+    const [scope, animate] = useAnimate();
+
+    const textRef = useRef(null);
+    const isInView = useInView(textRef, {once: true, margin: "-80px"});
 
     const imageFade = {
         hidden: {opacity: 0, translateY: 10},
@@ -23,52 +28,71 @@ const AboutMe = () => {
     }
 
     useEffect(() => {
-        let isActive = true;
+        if (isInView) {
+            let isActive = true;
 
-        const cycleIcons = async () => {
-            while (isActive) {
-                setCsIcons(true);
-                await new Promise((resolve) => setTimeout(resolve, 4000));
-                setCsIcons(false);
-                await new Promise((resolve) => setTimeout(resolve, 500));
-                setTiktokIcon(true);
-                tikSpring.set(200);
-                await new Promise((resolve) => setTimeout(resolve, 4000));
-                setTiktokIcon(false);
+            const cycleIcons = async () => {
+                while (isActive) {
+                    setCsIcons(true);
+                    await new Promise((resolve) => setTimeout(resolve, 4000));
+                    setCsIcons(false);
+                    await new Promise((resolve) => setTimeout(resolve, 500));
+                    setTiktokIcon(true);
+                    tikSpring.set(200);
+                    await new Promise((resolve) => setTimeout(resolve, 4000));
+                    setTiktokIcon(false);
+                    tikSpring.set(0);
+                    await new Promise((resolve) => setTimeout(resolve, 500));
+                }
+            }  
+
+            const fadeUp = setTimeout(() => {
+                cycleIcons();
+            }, 200);
+            return () => {
+                clearTimeout(fadeUp);
+                isActive = false;
                 tikSpring.set(0);
-                await new Promise((resolve) => setTimeout(resolve, 500));
-            }
-        }  
-        cycleIcons();
-        return () => {
-            isActive = false;
-            tikSpring.set(0);
-        };
-    }, []);
-
-    useEffect(() => {
+            };
+        }
         
-    }, [tiktokIcon]);
+    }, [isInView]);
 
     tikSpring.on('change', (value) => {
         setTikCount(Math.round(value));
     });
 
     return (
-        <div className="flex flex-row w-full card-background">
-            <div className="flex flex-col pl-56 pr-28 py-12 gap-4 w-7/12">
-                <p className="text-lg font-semibold">My name is Aaron Hong and I'm from <span className="p-color font-bold text-xl">Toronto, Ontario!</span></p>
-                <p className="text-lg font-semibold">I'm currently a 5th Year <span className="p-color font-bold text-xl">Computer Science</span> Student, and an aspiring <span className="p-color font-bold text-xl">Full-Stack Developer.</span></p>
-                <p className="text-lg font-semibold">Proficient in <span className="p-color font-bold text-xl">Typescript, Python</span> and <span className="p-color font-bold text-xl">Java.</span> I love using <span className="p-color font-bold text-xl">React</span> and <span className="p-color font-bold text-xl">NextJS </span>to build web apps!</p>
+        <motion.div initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{delay: 1.6}} className="flex flex-row w-full card-background">
+            <motion.div className="flex flex-col pl-56 pr-28 py-12 gap-4 w-7/12">
+                <div className="relative overflow-hidden w-fit">
+                    <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.1}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
+                    <p className="text-lg font-semibold">My name is Aaron Hong and I'm from <span className="p-color font-bold text-xl">Toronto, Ontario!</span></p>
+                </div>
+                
+                <div className="relative overflow-hidden w-fit">
+                    <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.2}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
+                    <p className="text-lg font-semibold">I'm currently a 5th Year <span className="p-color font-bold text-xl">Computer Science</span> Student, and an aspiring <span className="p-color font-bold text-xl">Full-Stack Developer.</span></p>
+                </div>
+                <div className="relative overflow-hidden w-fit">
+                    <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.3}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
+                    <p className="text-lg font-semibold">Proficient in <span className="p-color font-bold text-xl">Typescript, Python</span> and <span className="p-color font-bold text-xl">Java.</span> I love using <span className="p-color font-bold text-xl">React</span> and <span className="p-color font-bold text-xl">NextJS </span>to build web apps!</p>
+                </div>
+                <div></div>
+                <div></div>
+                <div className="relative overflow-hidden w-fit">
+                    <motion.div ref={textRef} initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.4}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
+                    <p className="text-lg font-semibold">I used to be a Content Creator primarily making short-form video content.</p>
+                </div>
+                <div></div>
+                <div></div>
+                <div className="relative overflow-hidden w-fit">
+                    <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.5}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
+                    <p className="text-lg font-semibold">Feel free to message me on <a href="https://www.linkedin.com/in/aaron-h-hong/" className="text-xl font-bold relative inline-block p-color before:absolute before:left-0 before:bottom-0 before:w-0 before:h-[2px] before:bg-p before:transition-all before:duration-200 hover:before:w-full">LinkedIn!</a> I love connecting with people!</p>
+                </div>
+            </motion.div>
             
-                <div></div>
-                <div></div>
-                <p className="text-lg font-semibold">I used to be a Content Creator primarily making short-form video content.</p>
-                <div></div>
-                <div></div>
-                <p className="text-lg font-semibold">Feel free to message me on <a href="https://www.linkedin.com/in/aaron-h-hong/" className="text-xl font-bold relative inline-block p-color before:absolute before:left-0 before:bottom-0 before:w-0 before:h-[2px] before:bg-p before:transition-all before:duration-200 hover:before:w-full">LinkedIn!</a> I love connecting with people!</p>
-            </div>
-            <div className="flex flex-col text-center w-5/12 h-full pr-56">
+            <motion.div ref={scope} className="flex flex-col text-center w-5/12 h-full pr-56">
                 <AnimatePresence>
                     {csIcons &&
                     <motion.div 
@@ -132,8 +156,8 @@ const AboutMe = () => {
                     </motion.div>
                     </motion.div>}
                 </AnimatePresence>
-            </div>
-        </div>
+            </motion.div>
+        </motion.div>
         
     );
 }

@@ -20,11 +20,11 @@ const Project: React.FC<ProjectProps> = ({layoutCardId, name, description, picUr
         <div className="relative">
             <motion.div
             layoutId={layoutCardId}
-            initial={{filter:"brightness(1)"}}
-            whileHover={{ scale: 1.05, filter:"brightness(1.2)", transition: {ease: "backOut"}}}
+            whileHover={{ scale: 1.05, transition: {ease: "backOut"}}}
             transition={{ease: "anticipate", duration: 0.5}}
-            className={`flex flex-col w-72 h-72 rounded-sm overflow-hidden transition-shadow shadow-md hover:shadow-2xl`}
+            className={`relative flex flex-col w-72 h-72 rounded-sm overflow-hidden transition-shadow shadow-md hover:shadow-2xl`}
             onClick={onClick}>
+                <motion.div initial={{opacity: 0}} whileHover={{opacity: 0.1}} className="absolute w-full h-full bg-white z-20"/>
                 <motion.div className="h-2/3">
                     {picUrl.split(".").pop() == "mp4"
                     ? (

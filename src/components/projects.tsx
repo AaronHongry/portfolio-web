@@ -1,9 +1,9 @@
 "use client";
 
-import { AnimatePresence } from "motion/react";
+import { motion, useInView, AnimatePresence } from "motion/react";
 import Project from "./project";
 import ProjectPop from "./projectPopup";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 interface ProjectType {
     id: string,
@@ -18,7 +18,13 @@ interface ProjectType {
 const Projects = () => {
 
     const [currentProject, setCurrentProject] = useState<ProjectType | null>(null);
+
+    const containerRef = useRef(null);
+    const inContainerView = useInView(containerRef, {once: true, margin: "-100px"});
  
+    const projectRef = useRef(null);
+    const isInView = useInView(projectRef, {once: true, margin: "-200px"});
+
     const handleOpen = (project: ProjectType) => {
         setCurrentProject(project);
     }
@@ -77,16 +83,25 @@ const Projects = () => {
     ]
 
     return (
-        <div className="">
-            <div className="flex flex-row w-full card-background justify-center items-center px-56 flex-wrap py-6 gap-4 z-20">
-                {projects.map((project) => (
-                    <Project key={project.id} id={project.id} layoutCardId={project.layoutCardId} name={project.name} description={project.description} bigText={project.bigText} langUsed={project.langUsed} picUrl={project.picUrl} onClick={() => handleOpen(project)}/>
+        <motion.div
+        initial={{opacity: 0, y: 20}}
+        animate={inContainerView ? {opacity: 1, y: 0} : {}}
+        ref={containerRef}>
+            <div ref={projectRef} className="flex flex-row w-full card-background justify-center items-center px-56 flex-wrap py-6 gap-4 z-20">
+                {projects.map((project, index) => (
+                    <motion.div
+                    initial={{opacity: 0, x: -20}}
+                    animate={isInView ? {opacity: 1, x: 0} : {}}
+                    transition={{delay: 0.1 * index}}
+                    key={project.id}>
+                        <Project key={project.id} id={project.id} layoutCardId={project.layoutCardId} name={project.name} description={project.description} bigText={project.bigText} langUsed={project.langUsed} picUrl={project.picUrl} onClick={() => handleOpen(project)}/>
+                    </motion.div>
                 ))}
             </div>
             <AnimatePresence>
                 {currentProject && <ProjectPop layoutCardId={currentProject.layoutCardId} name={currentProject.name} description={currentProject.description} langUsed={currentProject.langUsed} bigText={currentProject.bigText} onClose={handleOnClose}/>}
             </AnimatePresence>
-        </div>
+        </motion.div>
         
     );
 }
