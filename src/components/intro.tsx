@@ -9,10 +9,14 @@ const Intro = () => {
     const [tagMessage, setTagMessage] = useState("");
     const [tagScope, animateTag] = useAnimate();
     const [pfpScope, animatePfp] = useAnimate();
+    const [startHand, setStartHand] = useState(false);
 
     useEffect(() => {
         let isActive = true;
 
+        const hand = setTimeout(() => {
+            setStartHand(true);
+        }, 900);
         animatePfp(pfpScope.current, {
             translateX: [-10, 10, 10, -10, -10],
             translateY: [10, -10, 10, -10, 10],
@@ -21,10 +25,10 @@ const Intro = () => {
             duration: 15,
             ease: "easeInOut",
             repeat: Infinity,
-            repeatType: "reverse"
+            repeatType: "reverse",
+            delay: 1.6
         });
         
-
         const messages = [
             {text: "Full-Stack Web Developer", delay: 2500},
             {text: "Software Engineer", delay: 2500},
@@ -33,8 +37,8 @@ const Intro = () => {
         ];
 
         const cycleMessages = async () => {
+            await new Promise((resolve) => setTimeout(resolve, 1600));
             while (isActive) {
-
                 for (const i of messages) {
                     if (!isActive) break;
                     setTagMessage(i.text);
@@ -49,20 +53,26 @@ const Intro = () => {
 
         return () => {
             isActive = false;
+            clearTimeout(hand);
         };
     }, []);
+
+    useEffect(() => {
+        console.log("render");
+    });
 
     return (
         <div className="flex flex-row gap-2 h-4/5 px-56">
             <div className="flex flex-col py-32 w-1/2">
                 <div className="flex flex-col gap-3 pt-8">
                     <div className="flex flex-row items-baseline gap-3">
-                        <h1 className="text-5xl font-bold ">Hi there!</h1><h1 className="text-5xl font-bold drop-shadow-md animate-bounce">👋</h1>
+                        <motion.h1 initial={{opacity: 0, x: -10}} animate={{opacity: 1, x: 0}} transition={{ease: "easeOut", delay: 0.5}} className="text-5xl font-bold ">Hi there!</motion.h1>
+                        <motion.h1 initial={{scale: 0}} animate={{scale: 1, y: -12}} transition={{ease: "backOut", duration: 0.3, delay: 0.6}} className={`${startHand ? "animate-bounce" : ""} text-5xl font-bold drop-shadow-md`}>👋</motion.h1>
                     </div>
                     
                     <div className="flex flex-row gap-3">
-                        <h1 className="text-7xl font-bold">I'm</h1>
-                        <h1 className="text-7xl font-bold p-color">Aaron Hong</h1>
+                        <motion.h1 initial={{opacity: 0, x: -20}} animate={{opacity: 1, x: 0}} transition={{ease: "easeOut", duration: 0.5, delay: 0.9}} className="text-7xl font-bold">I'm</motion.h1>
+                        <motion.h1 initial={{opacity: 0, y: -10}} animate={{opacity: 1, y: 0}} transition={{ease: "easeOut", delay: 1.2}}className="text-7xl font-bold p-color">Aaron Hong</motion.h1>
                     </div>
                 </div>
                 
@@ -71,12 +81,12 @@ const Intro = () => {
                 </motion.div>
             </div>
 
-            <div className="flex flex-col gap-3 pt-8 w-1/2 justify-start items-center">
-                <motion.img whileHover={{scale: 1.1}} whileTap={{scale: 1.05}} ref={pfpScope} src="images/pfp.png" className="w-3/4"/>
-            </div>
+            <motion.div initial={{scale: 0.9, opacity: 0}} animate={{scale: 1, opacity: 1, transition: {opacity: {delay: 1.4}, scale: {delay: 1.35}}}} transition={{ease:"backOut"}} className="flex flex-col gap-3 pt-8 w-1/2 justify-start items-center">
+                <motion.img transition={{ease: "backOut"}} whileHover={{scale: 1.1}} whileTap={{scale: 1.05}} ref={pfpScope} src="images/pfp.webp" className="w-3/4"/>
+            </motion.div>
         </div>
         
-    );
+    );  
 }
 
 export default Intro;

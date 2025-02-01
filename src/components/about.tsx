@@ -40,7 +40,6 @@ const AboutMe = () => {
             }
         }  
         cycleIcons();
-
         return () => {
             isActive = false;
             tikSpring.set(0);
