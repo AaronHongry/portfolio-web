@@ -9,10 +9,11 @@ interface ProjectPopPros {
     description: string,
     bigText: string,
     langUsed: string[],
+    preview: React.ReactNode,
     onClose: () => void;
 }
 
-const ProjectPop: React.FC<ProjectPopPros> = ({layoutCardId, name, description, bigText, langUsed, onClose}) => {
+const ProjectPop: React.FC<ProjectPopPros> = ({layoutCardId, name, description, bigText, langUsed, preview, onClose}) => {
 
     const currentBigText = bigText.split("\n");
 
@@ -32,29 +33,29 @@ const ProjectPop: React.FC<ProjectPopPros> = ({layoutCardId, name, description, 
             onClick={(e) => e.stopPropagation()}>
                 <motion.div className="flex flex-col w-1/3 gap-12 pr-12 text-wrap">
                     <div className="flex flex-col gap-2">
-                        <motion.h1 initial={{opacity: 0, y: -10}} animate={{opacity: 1, y: 0}} className="text-3xl font-bold">{name}</motion.h1>
-                        <motion.h2 className="text-xl font-semibold text-slate-500">{description}</motion.h2>  
+                        <motion.h1 initial={{opacity: 0, y: -10}} animate={{opacity: 1, y: 0}} transition={{delay: 0.3}} className="text-3xl font-bold">{name}</motion.h1>
+                        <motion.h2 initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.4}} className="text-xl font-semibold text-slate-500">{description}</motion.h2>  
                     </div>
-                    <div className="flex flex-col gap-6">
+                    <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.5}} className="flex flex-col gap-6">
                         {currentBigText.map((line, index) => (
                             <p key={`line.${Date.now()}.${index}`} className="text-md font-semibold text">{line}</p>
                         ))}
-                    </div>
+                    </motion.div>
                     
-                    <p className="text-sm font-semibold p-color"><i>Check out the website by clicking on the video!</i></p>
+                    <motion.p initial={{x: -10, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{delay: 0.6}} className="text-sm font-semibold p-color"><i>Check out the website by clicking on the video!</i></motion.p>
 
                     <div className="flex flex-col gap-2">
-                        <h1 className="text-md font-bold">Frameworks / Languages Used:</h1>
+                        <motion.h1 initial={{y: -5, opacity: 0}} animate={{y: 0, opacity: 1}} transition={{delay: 0.7}} className="text-md font-bold">Frameworks / Languages Used:</motion.h1>
                         <div className="grid grid-cols-3 gap-2 justify-items-center">
                             {langUsed.map((lang, index) => (
-                                <p key={`lang.${Date.now()}.${index}`} className={`${index % 3 < 2 ? "border-r-2" : ""} col-span-1 w-full text-center`}>{lang}</p>
+                                <motion.p initial={{x: -5, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{delay: 0.8 + (0.1 * index)}} key={`lang.${Date.now()}.${index}`} className={`${index % 3 < 2 ? "border-r-2" : ""} col-span-1 w-full text-center`}>{lang}</motion.p>
                             ))}
                         </div>
                     </div>
-
                 </motion.div>
-                <motion.div className="flex flex-col w-2/3 bg-blue-300">
 
+                <motion.div className="flex flex-col w-2/3 items-center justify-center">
+                    {preview}
                 </motion.div>
             </motion.div>
         </motion.div>

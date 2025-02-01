@@ -4,6 +4,7 @@ import { motion, useInView, AnimatePresence } from "motion/react";
 import Project from "./project";
 import ProjectPop from "./projectPopup";
 import { useState, useRef } from "react";
+import GamifyPreview from "./previews/gamify-preview";
 
 interface ProjectType {
     id: string,
@@ -12,7 +13,8 @@ interface ProjectType {
     description: string,
     bigText: string,
     langUsed: string[],
-    picUrl: string
+    picUrl: string,
+    preview: React.ReactNode
 }
 
 const Projects = () => {
@@ -42,7 +44,8 @@ const Projects = () => {
             bigText: `Inspired by Notion Life Gamification by Soft Wagner, this website aims to make users pick up healthy habits by incoperating familiar game elements into every to-do lists.
             Create tasks, gain XP, level up, and spend XP to reward yourself and promote productivity!`,
             langUsed: ["HTML/CSS", "Javascipt", "Typescript", "React", "Next"],
-            picUrl: "gamify.mp4"
+            picUrl: "gamify.mp4",
+            preview: <GamifyPreview />
         },
         {   
             id: "project-gamify1",
@@ -51,7 +54,8 @@ const Projects = () => {
             description: "Use RPG Elements to Increase Productivity!",
             bigText: "",
             langUsed: [],
-            picUrl: "placeholder.gif"
+            picUrl: "placeholder.gif",
+            preview: <></>
         },
         {   
             id: "project-gamify2",
@@ -60,7 +64,8 @@ const Projects = () => {
             description: "Use RPG Elements to Increase Productivity!",
             bigText: "",
             langUsed: [],
-            picUrl: "placeholder.gif"
+            picUrl: "placeholder.gif",
+            preview: <></>
         },
         {   
             id: "project-gamify3",
@@ -69,7 +74,8 @@ const Projects = () => {
             description: "Use RPG Elements to Increase Productivity!",
             bigText: "",
             langUsed: [],
-            picUrl: "placeholder.gif"
+            picUrl: "placeholder.gif",
+            preview: <></>
         },
         {   
             id: "project-gamify4",
@@ -78,7 +84,8 @@ const Projects = () => {
             description: "Use RPG Elements to Increase Productivity!",
             bigText: "",
             langUsed: [],
-            picUrl: "placeholder.gif"
+            picUrl: "placeholder.gif",
+            preview: <></>
         },
     ]
 
@@ -94,12 +101,12 @@ const Projects = () => {
                     animate={isInView ? {opacity: 1, x: 0} : {}}
                     transition={{delay: 0.1 * index}}
                     key={project.id}>
-                        <Project key={project.id} id={project.id} layoutCardId={project.layoutCardId} name={project.name} description={project.description} bigText={project.bigText} langUsed={project.langUsed} picUrl={project.picUrl} onClick={() => handleOpen(project)}/>
+                        <Project key={project.id} id={project.id} layoutCardId={project.layoutCardId} name={project.name} description={project.description} bigText={project.bigText} langUsed={project.langUsed} picUrl={project.picUrl} preview={project.preview} onClick={() => handleOpen(project)}/>
                     </motion.div>
                 ))}
             </div>
             <AnimatePresence>
-                {currentProject && <ProjectPop layoutCardId={currentProject.layoutCardId} name={currentProject.name} description={currentProject.description} langUsed={currentProject.langUsed} bigText={currentProject.bigText} onClose={handleOnClose}/>}
+                {currentProject && <ProjectPop layoutCardId={currentProject.layoutCardId} name={currentProject.name} description={currentProject.description} langUsed={currentProject.langUsed} bigText={currentProject.bigText} preview={currentProject.preview} onClose={handleOnClose}/>}
             </AnimatePresence>
         </motion.div>
         

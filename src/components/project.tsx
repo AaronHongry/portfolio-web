@@ -11,6 +11,7 @@ interface ProjectProps {
     bigText: string,
     langUsed: string[],
     picUrl: string,
+    preview: React.ReactNode,
     onClick: () => void;
 }
 

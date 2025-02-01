@@ -6,6 +6,7 @@ import NavBar from "@/components/navbar";
 import Intro from "@/components/intro";
 import AboutMe from "@/components/about";
 import Projects from "@/components/projects";
+import Footer from "@/components/footer";
 
 export default function Home() {
 
@@ -25,7 +26,7 @@ export default function Home() {
 	}, []);
 
 	return (
-		<div className={`${show ? "" : "overflow-y-hidden"} w-screen h-screen py-12 overflow-x-hidden`}>
+		<div className={`${show ? "" : "overflow-y-hidden"} w-screen h-screen pt-12 overflow-x-hidden`}>
 			<NavBar />
 			<Intro />
 			<motion.div initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{delay: 1.6}} className="flex flex-col items-center mb-6">
@@ -39,6 +40,7 @@ export default function Home() {
 				<h1 className="text-4xl font-bold">Projects</h1>
 			</motion.div>
 			<Projects />
+			<Footer />
 		</div>
 	);
 }
