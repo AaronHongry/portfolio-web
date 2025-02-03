@@ -67,26 +67,7 @@ const Projects = () => {
             picUrl: "placeholder.gif",
             preview: <></>
         },
-        {   
-            id: "project-gamify3",
-            layoutCardId: "project-card-gamify3",
-            name: "Gamify Produictivity",
-            description: "Use RPG Elements to Increase Productivity!",
-            bigText: "",
-            langUsed: [],
-            picUrl: "placeholder.gif",
-            preview: <></>
-        },
-        {   
-            id: "project-gamify4",
-            layoutCardId: "project-card-gamify4",
-            name: "Gamify Produictivity",
-            description: "Use RPG Elements to Increase Productivity!",
-            bigText: "",
-            langUsed: [],
-            picUrl: "placeholder.gif",
-            preview: <></>
-        },
+        
     ]
 
     return (
@@ -94,7 +75,7 @@ const Projects = () => {
         initial={{opacity: 0, y: 20}}
         animate={inContainerView ? {opacity: 1, y: 0} : {}}
         ref={containerRef}>
-            <div ref={projectRef} className="flex flex-row w-full card-background justify-center items-center px-56 flex-wrap py-6 gap-4 z-20">
+            <div ref={projectRef} className="flex md:flex-row flex-col w-full card-background justify-center items-center lg:px-56 px-8 flex-wrap py-6 gap-4 z-20">
                 {projects.map((project, index) => (
                     <motion.div
                     initial={{opacity: 0, x: -20}}
@@ -106,7 +87,7 @@ const Projects = () => {
                 ))}
             </div>
             <AnimatePresence>
-                {currentProject && <ProjectPop layoutCardId={currentProject.layoutCardId} name={currentProject.name} description={currentProject.description} langUsed={currentProject.langUsed} bigText={currentProject.bigText} preview={currentProject.preview} onClose={handleOnClose}/>}
+                {currentProject && <ProjectPop layoutCardId={currentProject.layoutCardId} name={currentProject.name} description={currentProject.description} langUsed={currentProject.langUsed} bigText={currentProject.bigText} preview={currentProject.preview} picUrl={currentProject.picUrl} onClose={handleOnClose}/>}
             </AnimatePresence>
         </motion.div>
         

@@ -36,7 +36,7 @@ export default function Home() {
 			<motion.div
 			initial={{ opacity: 0, y: 20}}
 			animate={inProjectView ? { opacity: 1, y: 0} : {}}
-			ref={projectRef} className="flex flex-col items-center my-6">
+			ref={projectRef} className="flex flex-col items-center my-6 mt-16">
 				<h1 className="text-4xl font-bold">Projects</h1>
 			</motion.div>
 			<Projects />

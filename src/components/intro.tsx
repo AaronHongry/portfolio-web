@@ -11,8 +11,17 @@ const Intro = () => {
     const [pfpScope, animatePfp] = useAnimate();
     const [startHand, setStartHand] = useState(false);
 
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
     useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 1024);
+        window.addEventListener("resize", handleResize);
+
         let isActive = true;
+        let picDelay = 1.8;
+        if (isMobile) {
+            picDelay = 0.3;
+        }
 
         const hand = setTimeout(() => {
             setStartHand(true);
@@ -26,7 +35,7 @@ const Intro = () => {
             ease: "easeInOut",
             repeat: Infinity,
             repeatType: "reverse",
-            delay: 1.8
+            delay: picDelay
         });
         
         const messages = [
@@ -54,6 +63,7 @@ const Intro = () => {
         return () => {
             isActive = false;
             clearTimeout(hand);
+            window.removeEventListener("resize", handleResize);
         };
     }, []);
 
@@ -62,27 +72,27 @@ const Intro = () => {
     });
 
     return (
-        <div className="flex flex-row gap-2 h-4/5 px-56">
-            <div className="flex flex-col py-32 w-1/2">
-                <div className="flex flex-col gap-3 pt-8">
+        <div className="flex flex-col-reverse lg:flex-row lg:gap-2 gap-1 lg:h-4/5 lg:px-56 px-5">
+            <div className="flex flex-col lg:py-32 py-12 lg:w-1/2 w-full">
+                <div className="flex flex-col lg:gap-3 lg:pt-8 max-lg:items-center">
                     <div className="flex flex-row items-baseline gap-3">
-                        <motion.h1 initial={{opacity: 0, x: -10}} animate={{opacity: 1, x: 0}} transition={{ease: "easeOut", delay: 0.5}} className="text-5xl font-bold ">Hi there!</motion.h1>
-                        <motion.h1 initial={{scale: 0}} animate={{scale: 1, y: -12}} transition={{ease: "backOut", duration: 0.3, delay: 0.6}} className={`${startHand ? "animate-bounce" : ""} text-5xl font-bold drop-shadow-md`}>👋</motion.h1>
+                        <motion.h1 initial={{opacity: 0, x: -10}} animate={{opacity: 1, x: 0}} transition={{ease: "easeOut", delay: 0.5}} className="lg:text-5xl text-3xl font-bold ">Hi there!</motion.h1>
+                        <motion.h1 initial={{scale: 0}} animate={{scale: 1, y: -12}} transition={{ease: "backOut", duration: 0.3, delay: 0.6}} className={`${startHand ? "animate-bounce" : ""} lg:text-5xl text-4xl font-bold drop-shadow-md`}>👋</motion.h1>
                     </div>
                     
-                    <div className="flex flex-row gap-3">
-                        <motion.h1 initial={{opacity: 0, x: -20}} animate={{opacity: 1, x: 0}} transition={{ease: "easeOut", duration: 0.5, delay: 0.9}} className="text-7xl font-bold">I'm</motion.h1>
-                        <motion.h1 initial={{opacity: 0, y: -10}} animate={{opacity: 1, y: 0}} transition={{ease: "easeOut", delay: 1.2}}className="text-7xl font-bold p-color">Aaron Hong</motion.h1>
+                    <div className="flex flex-col lg:flex-row lg:gap-3">
+                        <motion.h1 initial={{opacity: 0, x: -20}} animate={{opacity: 1, x: 0}} transition={{ease: "easeOut", duration: 0.5, delay: 0.9}} className="lg:text-7xl text-4xl font-bold max-lg:hidden">I'm</motion.h1>
+                        <motion.h1 initial={{opacity: 0, y: -10}} animate={{opacity: 1, y: 0}} transition={{ease: "easeOut", delay: 1.2}} className="lg:text-7xl text-5xl font-bold p-color max-lg:pt-8">Aaron Hong</motion.h1>
                     </div>
                 </div>
                 
-                <motion.div ref={tagScope} className="flex flex-row gap-3 items-baseline pt-32 w-full">
-                    <h1 className={`${tagMessage == "Connect with Me!" && 'animate-bounce p-color'} text-5xl font-bold`}>{tagMessage}</h1>{tagMessage == "Content Creator" && <h1 className="text-2xl font-bold s-color">{`(On break !!)`}</h1>}
+                <motion.div ref={tagScope} className="flex flex-row max-lg:justify-center max-lg:min-h-28 gap-3 items-baseline lg:pt-32 pt-3 w-full">
+                    <h1 className={`${tagMessage == "Connect with Me!" && 'animate-bounce p-color'} lg:text-5xl text-2xl font-bold`}>{tagMessage}</h1>{tagMessage == "Content Creator" && <h1 className="lg:text-2xl text-md font-bold s-color">{`(On break !!)`}</h1>}
                 </motion.div>
             </div>
 
-            <motion.div initial={{scale: 0.9, opacity: 0}} animate={{scale: 1, opacity: 1, transition: {opacity: {delay: 1.8}, scale: {delay: 1.35}}}} transition={{ease:"backOut"}} className="flex flex-col gap-3 pt-8 w-1/2 justify-start items-center">
-                <motion.img transition={{ease: "backOut"}} whileHover={{scale: 1.1}} whileTap={{scale: 1.05}} ref={pfpScope} src="images/pfp.webp" className="w-3/4"/>
+            <motion.div initial={{scale: 0.9, opacity: 0}} animate={isMobile ? {scale: 1, opacity: 1, transition: {opacity: {delay: 0.8}, scale: {delay: 0.35}}} : {scale: 1, opacity: 1, transition: {opacity: {delay: 1.8}, scale: {delay: 1.35}}}} transition={{ease:"backOut"}} className="flex flex-col lg:pt-8 lg:w-1/2 max-lg:h-1/6 lg:justify-start items-center">
+                <motion.img transition={{ease: "backOut"}} whileHover={{scale: 1.1}} whileTap={{scale: 1.05}} ref={pfpScope} src="images/pfp.webp" className="lg:w-3/4 lg:h-3/4 max-lg:h-1/2 max-lg:max-w-96 object-contain"/>
             </motion.div>
         </div>
         

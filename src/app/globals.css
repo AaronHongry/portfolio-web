@@ -64,3 +64,11 @@
   background: #ddebe9;
   border-radius: 10px;
 }
+
+@media (max-width: 1023px) { /* Below 1024px */
+  ::-webkit-scrollbar {
+    width: auto;
+    height: auto;
+    display: none;
+  }
+}

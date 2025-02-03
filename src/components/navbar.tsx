@@ -14,7 +14,7 @@ const NavBar = () => {
         initial="hidden"
         animate="visible"
         transition={{staggerChildren: 0.3}}
-        className="flex flex-row gap-4 px-56 items-center">
+        className="flex flex-row gap-4 lg:px-56 px-12 items-center">
             <motion.img variants={linksAppear} className="w-10 h-10 mb-2" src="images/logo.gif"/>
             <div className="flex flex-row gap-4">
                 <motion.a

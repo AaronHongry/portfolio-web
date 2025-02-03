@@ -14,6 +14,8 @@ const AboutMe = () => {
 
     const [scope, animate] = useAnimate();
 
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+
     const textRef = useRef(null);
     const isInView = useInView(textRef, {once: true, margin: "-80px"});
 
@@ -58,13 +60,22 @@ const AboutMe = () => {
         
     }, [isInView]);
 
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 1024);
+        window.addEventListener("resize", handleResize);
+
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        }
+    }, []);
+
     tikSpring.on('change', (value) => {
         setTikCount(Math.round(value));
     });
 
     return (
-        <motion.div initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{delay: 1.6}} className="flex flex-row w-full card-background">
-            <motion.div className="flex flex-col pl-56 pr-28 py-12 gap-4 w-7/12">
+        <motion.div initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{delay: 1.6}} className="flex lg:flex-row flex-col-reverse w-full card-background max-lg:px-12">
+            <motion.div className="flex flex-col lg:pl-56 lg:pr-28 py-12 gap-4 lg:w-7/12 w-full">
                 <div className="relative overflow-hidden w-fit">
                     <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.1}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
                     <p className="text-lg font-semibold">My name is Aaron Hong and I'm from <span className="p-color font-bold text-xl">Toronto, Ontario!</span></p>
@@ -88,48 +99,48 @@ const AboutMe = () => {
                 <div></div>
                 <div className="relative overflow-hidden w-fit">
                     <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.5}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
-                    <p className="text-lg font-semibold">Feel free to message me on <a href="https://www.linkedin.com/in/aaron-h-hong/" className="text-xl font-bold relative inline-block p-color before:absolute before:left-0 before:bottom-0 before:w-0 before:h-[2px] before:bg-p before:transition-all before:duration-200 hover:before:w-full">LinkedIn!</a> I love connecting with people!</p>
+                    <p className="text-lg font-semibold">Feel free to message me on <a href="https://www.linkedin.com/in/aaron-h-hong/" target="_blank" className="text-xl font-bold relative inline-block p-color before:absolute before:left-0 before:bottom-0 before:w-0 before:h-[2px] before:bg-p before:transition-all before:duration-200 hover:before:w-full">LinkedIn!</a> I love connecting with people!</p>
                 </div>
             </motion.div>
             
-            <motion.div ref={scope} className="flex flex-col text-center w-5/12 h-full pr-56">
+            <motion.div ref={scope} className="flex flex-col text-center lg:w-5/12 w-full lg:pr-56">
                 <AnimatePresence>
-                    {csIcons &&
+                    {csIcons && !isMobile &&
                     <motion.div 
                     initial="hidden"
                     animate="visible"
                     exit={{opacity: 0, y: 10, transition: {ease: "backIn", duration: 0.4} }}
                     transition={{staggerChildren: 0.1}}
-                    className="flex flex-row gap-16 justify-center items-center h-96">
+                    className="flex flex-row lg:gap-16 gap-8 justify-center items-center lg:h-96 h-56">
                         <motion.img
                         variants={imageFade}
                         animate={{y: [-10, 10]}}
                         transition={{y: {repeat: Infinity, duration: 2, repeatType: "reverse", ease: "easeInOut"}}}
-                        className="w-32 h-32 drop-shadow-xl" src="images/typescript.png"/>
+                        className="lg:w-32 lg:h-32 w-16 h-16 drop-shadow-xl" src="images/typescript.png"/>
                         <motion.img
                         variants={imageFade}
                         animate={{y: [-10, 10]}}
                         transition={{y: {repeat: Infinity, duration: 2, repeatType: "reverse", ease: "easeInOut", delay: 0.1}}}
-                        className="w-32 h-32 drop-shadow-xl" src="images/react.png"/>
+                        className="lg:w-32 lg:h-32 w-16 h-16 drop-shadow-xl" src="images/react.png"/>
                         <motion.img
                         variants={imageFade}
                         animate={{y: [-10, 10]}}
                         transition={{y: {repeat: Infinity, duration: 2, repeatType: "reverse", ease: "easeInOut", delay: 0.2}}}
-                        className="w-32 h-32 drop-shadow-xl" src="images/nextjs.png"/>
+                        className="lg:w-32 lg:h-32 w-16 h-16 drop-shadow-xl" src="images/nextjs.png"/>
                     </motion.div>}
-                    {tiktokIcon &&
+                    {tiktokIcon && !isMobile &&
                     <motion.div
                     initial="hidden"
                     animate="visible"
                     exit={{opacity: 0, y: 10, transition: {ease: "backIn", duration: 0.4} }}
-                    className="flex flex-col justify-center items-center gap-8 h-96">
+                    className="flex flex-col justify-center items-center gap-8 lg:h-96 h-56">
                         <motion.div
                         variants={imageSlide}
                         animate={{y: [-10, 10]}}
                         transition={{y: {repeat: Infinity, duration: 2, repeatType: "reverse", ease: "easeInOut", delay: 0.2}}}>
                             <div className="grid grid-cols-8 gap-3 justify-start">
-                                <p className="text-7xl font-bold p-color col-span-5 text-right">{tikCount}</p>
-                                <p className="text-7xl font-bold p-color col-span-3">K+</p>
+                                <p className="lg:text-7xl text-6xl font-bold p-color col-span-5 text-right">{tikCount}</p>
+                                <p className="lg:text-7xl text-6xl font-bold p-color col-span-3">K+</p>
                             </div>
                             <p className="text-2xl font-semibold">Followers</p>
                         </motion.div>
@@ -137,22 +148,22 @@ const AboutMe = () => {
                         initial="hidden"
                         animate="visible"
                         transition={{staggerChildren: 0.1}}
-                        className="flex flex-row gap-16 justify-center items-center">
+                        className="flex flex-row lg:gap-16 gap-8 justify-center items-center">
                             <motion.img
                             variants={imageFade}
                             animate={{y: [-10, 10]}}
                             transition={{y: {repeat: Infinity, duration: 2, repeatType: "reverse", ease: "easeInOut"}}}
-                            className="w-24 h-24 drop-shadow-xl" src="images/tiktok.png"/>
+                            className="lg:w-24 lg:h-24 w-12 h-12 drop-shadow-xl" src="images/tiktok.png"/>
                             <motion.img
                             variants={imageFade}
                             animate={{y: [-10, 10]}}
                             transition={{y: {repeat: Infinity, duration: 2, repeatType: "reverse", ease: "easeInOut", delay: 0.1}}}
-                            className="w-24 h-24  drop-shadow-xl" src="images/youtube.png"/>
+                            className="lg:w-24 lg:h-24 w-12 h-12 drop-shadow-xl" src="images/youtube.png"/>
                             <motion.img
                             variants={imageFade}
                             animate={{y: [-10, 10]}}
                             transition={{y: {repeat: Infinity, duration: 2, repeatType: "reverse", ease: "easeInOut", delay: 0.2}}}
-                            className="w-24 h-24  drop-shadow-xl" src="images/twitch.png"/>
+                            className="lg:w-24 lg:h-24 w-12 h-12 drop-shadow-xl" src="images/twitch.png"/>
                     </motion.div>
                     </motion.div>}
                 </AnimatePresence>

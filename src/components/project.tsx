@@ -23,7 +23,7 @@ const Project: React.FC<ProjectProps> = ({layoutCardId, name, description, picUr
             layoutId={layoutCardId}
             whileHover={{ scale: 1.05, transition: {ease: "backOut"}}}
             transition={{ease: "anticipate", duration: 0.5}}
-            className={`relative flex flex-col w-72 h-72 rounded-sm overflow-hidden transition-shadow shadow-md hover:shadow-2xl`}
+            className={`relative flex flex-col w-72 h-72 rounded-xl overflow-hidden transition-shadow shadow-md hover:shadow-2xl`}
             onClick={onClick}>
                 <motion.div initial={{opacity: 0}} whileHover={{opacity: 0.1}} className="absolute w-full h-full bg-white z-20"/>
                 <motion.div className="h-2/3">
