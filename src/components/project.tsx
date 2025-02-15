@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { useState } from "react";
+import Image from "next/image";
 
 interface ProjectProps {
     id: string,
@@ -32,7 +32,7 @@ const Project: React.FC<ProjectProps> = ({layoutCardId, name, description, picUr
                         <video src={`images/${picUrl}`} muted loop autoPlay className="w-full h-full object-cover"/>
                     ) 
                     : (
-                        <img src={`images/${picUrl}`} />
+                        <Image alt={`${name} Picture`} width={288} height={216} src={`/images/${picUrl}`} />
                     )}
                     
                 </motion.div>

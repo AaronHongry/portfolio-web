@@ -1,6 +1,7 @@
 "use client"
 
 import { motion, useAnimate } from "motion/react";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 
@@ -81,7 +82,7 @@ const Intro = () => {
                     </div>
                     
                     <div className="flex flex-col lg:flex-row lg:gap-3">
-                        <motion.h1 initial={{opacity: 0, x: -20}} animate={{opacity: 1, x: 0}} transition={{ease: "easeOut", duration: 0.5, delay: 0.9}} className="lg:text-7xl text-4xl font-bold max-lg:hidden">I'm</motion.h1>
+                        <motion.h1 initial={{opacity: 0, x: -20}} animate={{opacity: 1, x: 0}} transition={{ease: "easeOut", duration: 0.5, delay: 0.9}} className="lg:text-7xl text-4xl font-bold max-lg:hidden">{`I'm`}</motion.h1>
                         <motion.h1 initial={{opacity: 0, y: -10}} animate={{opacity: 1, y: 0}} transition={{ease: "easeOut", delay: 1.2}} className="lg:text-7xl text-5xl font-bold p-color max-lg:pt-8">Aaron Hong</motion.h1>
                     </div>
                 </div>
@@ -91,8 +92,8 @@ const Intro = () => {
                 </motion.div>
             </div>
 
-            <motion.div initial={{scale: 0.9, opacity: 0}} animate={isMobile ? {scale: 1, opacity: 1, transition: {opacity: {delay: 0.8}, scale: {delay: 0.35}}} : {scale: 1, opacity: 1, transition: {opacity: {delay: 1.8}, scale: {delay: 1.35}}}} transition={{ease:"backOut"}} className="flex flex-col lg:pt-8 lg:w-1/2 max-lg:h-1/6 lg:justify-start items-center">
-                <motion.img transition={{ease: "backOut"}} whileHover={{scale: 1.1}} whileTap={{scale: 1.05}} ref={pfpScope} src="images/pfp.webp" className="lg:w-3/4 lg:h-3/4 max-lg:h-1/2 max-lg:max-w-96 object-contain"/>
+            <motion.div initial={{scale: 0.3, opacity: 0}} animate={isMobile ? {scale: 1, opacity: 1, transition: {opacity: {delay: 0.8}, scale: {delay: 0.65}}} : {scale: 1, opacity: 1, transition: {opacity: {delay: 1.8}, scale: {delay: 1.7}}}} transition={{ease:"backOut"}} className="flex flex-col lg:pt-8 lg:w-1/2 max-lg:h-1/6 lg:justify-center items-center">
+                <motion.div transition={{ease: "backOut"}} whileHover={{scale: 1.1}} whileTap={{scale: 1.05}} ref={pfpScope} className="h-full w-full flex justify-center"><Image width={365} height={346} alt="Me" src="/images/pfp.webp" className="lg:w-3/4 lg:h-3/4 max-lg:h-1/2 max-lg:max-w-96 object-contain"/></motion.div>
             </motion.div>
         </div>
         

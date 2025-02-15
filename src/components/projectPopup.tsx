@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion } from "motion/react";
+import Image from "next/image";
 
 interface ProjectPopPros {
     layoutCardId: string,
@@ -56,7 +57,7 @@ const ProjectPop: React.FC<ProjectPopPros> = ({layoutCardId, name, description, 
                                 <video src={`images/${picUrl}`} muted loop autoPlay className="w-full h-full object-cover"/>
                             ) 
                             : (
-                                <img src={`images/${picUrl}`} />
+                                <Image alt={`${name} Preview`} width={757} height={426} src={`images/${picUrl}`} />
                             )}
                         </motion.div>
                     }

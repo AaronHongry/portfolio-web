@@ -12,8 +12,6 @@ const AboutMe = () => {
 
     const tikSpring = useSpring(0, {bounce: 0, duration: 3000});
 
-    const [scope, animate] = useAnimate();
-
     const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
 
     const textRef = useRef(null);
@@ -78,12 +76,12 @@ const AboutMe = () => {
             <motion.div className="flex flex-col lg:pl-56 lg:pr-28 py-12 gap-4 lg:w-7/12 w-full">
                 <div className="relative overflow-hidden w-fit">
                     <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.1}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
-                    <p className="text-lg font-semibold">My name is Aaron Hong and I'm from <span className="p-color font-bold text-xl">Toronto, Ontario!</span></p>
+                    <p className="text-lg font-semibold">{`My name is Aaron Hong and I'm from `}<span className="p-color font-bold text-xl">Toronto, Ontario!</span></p>
                 </div>
                 
                 <div className="relative overflow-hidden w-fit">
                     <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.2}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
-                    <p className="text-lg font-semibold">I'm currently a 5th Year <span className="p-color font-bold text-xl">Computer Science</span> Student, and an aspiring <span className="p-color font-bold text-xl">Full-Stack Developer.</span></p>
+                    <p className="text-lg font-semibold">{`I'm currently a 5th Year `}<span className="p-color font-bold text-xl">Computer Science</span> Student, and an aspiring <span className="p-color font-bold text-xl">Full-Stack Developer.</span></p>
                 </div>
                 <div className="relative overflow-hidden w-fit">
                     <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.3}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
@@ -103,7 +101,7 @@ const AboutMe = () => {
                 </div>
             </motion.div>
             
-            <motion.div ref={scope} className="flex flex-col text-center lg:w-5/12 w-full lg:pr-56">
+            <motion.div className="flex flex-col text-center lg:w-5/12 w-full lg:pr-56">
                 <AnimatePresence>
                     {csIcons && !isMobile &&
                     <motion.div 
