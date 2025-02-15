@@ -73,8 +73,6 @@ const ProjectPop: React.FC<ProjectPopPros> = ({layoutCardId, name, description, 
                             <p key={`line.${Date.now()}.${index}`} className="lg:text-md text-sm font-semibold text">{line}</p>
                         ))}
                     </motion.div>
-                    
-                    {!isMobile && <motion.p initial={{x: -10, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{delay: 0.6}} className="lg:text-sm text-xs font-semibold p-color"><i>Check out the website by clicking on the video!</i></motion.p>}
 
                     <div className="flex flex-col gap-2">
                         <motion.h1 initial={{y: -5, opacity: 0}} animate={{y: 0, opacity: 1}} transition={{delay: 0.7}} className="lg:text-md text-xs font-bold">Frameworks / Languages Used:</motion.h1>

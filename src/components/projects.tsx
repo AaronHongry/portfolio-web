@@ -41,7 +41,7 @@ const Projects = () => {
             layoutCardId: "project-card-gamify",
             name: "Gamify Productivity",
             description: "Use RPG Elements to Build Better Habits!",
-            bigText: `Inspired by Notion Life Gamification by Soft Wagner, this website aims to make users pick up healthy habits by incoperating familiar game elements into every to-do lists.
+            bigText: `Inspired by Notion Life Gamification by Soft Wagner, this full-stack application aims to make users pick up healthy habits by incoperating familiar game elements into every to-do lists.
             Create tasks, gain XP, level up, and spend XP to reward yourself and promote productivity!`,
             langUsed: ["HTML/CSS", "Javascipt", "Typescript", "React", "Next"],
             picUrl: "gamify.mp4",
