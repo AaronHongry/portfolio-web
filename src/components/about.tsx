@@ -12,7 +12,12 @@ const AboutMe = () => {
 
     const tikSpring = useSpring(0, {bounce: 0, duration: 3000});
 
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+    const [isMobile, setIsMobile] = useState(false);
+        const isClient = typeof window !== undefined;
+        if (isClient) {
+            setIsMobile(window.innerWidth < 1024);
+        }
+        
 
     const textRef = useRef(null);
     const isInView = useInView(textRef, {once: true, margin: "-80px"});

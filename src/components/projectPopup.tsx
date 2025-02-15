@@ -19,7 +19,12 @@ const ProjectPop: React.FC<ProjectPopPros> = ({layoutCardId, name, description, 
 
     const currentBigText = bigText.split("\n");
 
-    const [isMobile, setIsMobile] = useState(window.innerWidth < 1024);
+    const [isMobile, setIsMobile] = useState(false);
+        const isClient = typeof window !== undefined;
+        if (isClient) {
+            setIsMobile(window.innerWidth < 1024);
+        }
+        
 
     useEffect(() => {
         const handleResize = () => setIsMobile(window.innerWidth < 1024);
