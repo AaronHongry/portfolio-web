@@ -13,10 +13,7 @@ const AboutMe = () => {
     const tikSpring = useSpring(0, {bounce: 0, duration: 3000});
 
     const [isMobile, setIsMobile] = useState(false);
-        const isClient = typeof window !== undefined;
-        if (isClient) {
-            setIsMobile(window.innerWidth < 1024);
-        }
+    
         
 
     const textRef = useRef(null);
@@ -64,6 +61,10 @@ const AboutMe = () => {
     }, [isInView]);
 
     useEffect(() => {
+        const isClient = typeof window !== undefined;
+        if (isClient) {
+            setIsMobile(window.innerWidth < 1024);
+        }
         const handleResize = () => setIsMobile(window.innerWidth < 1024);
         window.addEventListener("resize", handleResize);
 
