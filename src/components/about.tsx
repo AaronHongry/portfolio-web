@@ -1,6 +1,6 @@
 "use client"
 
-import { motion, useSpring, AnimatePresence, useInView, useAnimate} from "motion/react";
+import { motion, useSpring, AnimatePresence, useInView} from "motion/react";
 import { useEffect, useState, useRef } from "react";
 
 

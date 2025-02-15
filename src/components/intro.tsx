@@ -68,9 +68,6 @@ const Intro = () => {
         };
     }, []);
 
-    useEffect(() => {
-        console.log("render");
-    });
 
     return (
         <div className="flex flex-col-reverse lg:flex-row lg:gap-2 gap-1 lg:h-4/5 lg:px-56 px-5">
