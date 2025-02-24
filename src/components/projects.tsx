@@ -5,6 +5,8 @@ import Project from "./project";
 import ProjectPop from "./projectPopup";
 import { useState, useRef } from "react";
 import GamifyPreview from "./previews/gamify-preview";
+import ValentinePreview from "./previews/valentine-preview";
+import HSRChatroomPreview from "./previews/hsrchatroom-preview";
 
 interface ProjectType {
     id: string,
@@ -37,6 +39,28 @@ const Projects = () => {
 
     const projects: ProjectType[] = [
         {   
+            id: "project-hsrchatroom",
+            layoutCardId: "project-card-hsrchatroom",
+            name: "HSR: Interactive Chat Room",
+            description: "Honkai: Star Rail Interactive Real-Time Messenger!",
+            bigText: `A Honkai: Star Rail themed messenger! Allows for the creation of chatrooms with real-time chatting between characters.
+            Messages are kept in real-time with Express and Socket.IO and chat rooms are maintained using PostgreSQL backend and cached locally.`,
+            langUsed: ["HTML/CSS", "Javascipt", "Typescript", "React", "Next", "Express", "Socket.IO", "PostgreSQL"],
+            picUrl: "hsrchatroom.mp4",
+            preview: <HSRChatroomPreview />
+        },
+        {   
+            id: "project-valentine",
+            layoutCardId: "project-card-valentine",
+            name: "Pocket TCG - Valentine's Day",
+            description: "Open a Booster Pack for Valentine's Day!",
+            bigText: `Valentine's Day card but made to be opened like a Pokemon Booster Pack! Heavily inspired by Pokemon - Pocket TCG.
+            Created entirely using CSS and Motion for animation and to practice building mnobile games with React states.`,
+            langUsed: ["HTML/CSS", "Javascipt", "Typescript", "React", "Next", "Motion"],
+            picUrl: "valentine.mp4",
+            preview: <ValentinePreview/>
+        },
+        {   
             id: "project-gamify",
             layoutCardId: "project-card-gamify",
             name: "Gamify Productivity",
@@ -46,28 +70,7 @@ const Projects = () => {
             langUsed: ["HTML/CSS", "Javascipt", "Typescript", "React", "Next"],
             picUrl: "gamify.mp4",
             preview: <GamifyPreview />
-        },
-        {   
-            id: "project-gamify1",
-            layoutCardId: "project-card-gamify1",
-            name: "Gamify Produictivity",
-            description: "Use RPG Elements to Increase Productivity!",
-            bigText: "",
-            langUsed: [],
-            picUrl: "placeholder.gif",
-            preview: <></>
-        },
-        {   
-            id: "project-gamify2",
-            layoutCardId: "project-card-gamify2",
-            name: "Gamify Produictivity",
-            description: "Use RPG Elements to Increase Productivity!",
-            bigText: "",
-            langUsed: [],
-            picUrl: "placeholder.gif",
-            preview: <></>
-        },
-        
+        },        
     ]
 
     return (
