@@ -55,7 +55,7 @@ const Projects = () => {
             name: "Pocket TCG - Valentine's Day",
             description: "Open a Booster Pack for Valentine's Day!",
             bigText: `Valentine's Day card but made to be opened like a Pokemon Booster Pack! Heavily inspired by Pokemon - Pocket TCG.
-            Created entirely using CSS and Motion for animation and to practice building mnobile games with React states.`,
+            Created entirely using CSS and Motion for animation and to practice building mobile games with React states.`,
             langUsed: ["HTML/CSS", "Javascipt", "Typescript", "React", "Next", "Motion"],
             picUrl: "valentine.mp4",
             preview: <ValentinePreview/>
