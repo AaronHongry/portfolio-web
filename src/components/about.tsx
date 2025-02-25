@@ -79,31 +79,31 @@ const AboutMe = () => {
 
     return (
         <motion.div initial={{opacity: 0, y: 20}} animate={{opacity: 1, y: 0}} transition={{delay: 1.6}} className="flex lg:flex-row flex-col-reverse w-full card-background max-lg:px-12">
-            <motion.div className="flex flex-col lg:pl-56 lg:pr-28 py-12 gap-4 lg:w-7/12 w-full">
+            <motion.div className="flex flex-col lg:pl-56 lg:pr-28 max-lg:py-4 py-12 gap-4 lg:w-7/12 w-full">
                 <div className="relative overflow-hidden w-fit">
                     <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.1}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
-                    <p className="text-lg font-semibold">{`My name is Aaron Hong and I'm from `}<span className="p-color font-bold text-xl">Toronto, Ontario!</span></p>
+                    <p className="max-lg:text-base text-lg font-semibold">{`My name is Aaron Hong and I'm from `}<span className="max-lg:text-lg p-color font-bold text-xl">Toronto, Ontario!</span></p>
                 </div>
                 
                 <div className="relative overflow-hidden w-fit">
                     <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.2}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
-                    <p className="text-lg font-semibold">{`I'm currently a 5th Year `}<span className="p-color font-bold text-xl">Computer Science</span> Student, and an aspiring <span className="p-color font-bold text-xl">Full-Stack Developer.</span></p>
+                    <p className="max-lg:text-base text-lg font-semibold">{`I'm currently a 5th Year `}<span className="max-lg:text-lg p-color font-bold text-xl">Computer Science</span> Student, and an aspiring <span className="max-lg:text-lg p-color font-bold text-xl">Full-Stack Developer.</span></p>
                 </div>
                 <div className="relative overflow-hidden w-fit">
                     <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.3}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
-                    <p className="text-lg font-semibold">Proficient in <span className="p-color font-bold text-xl">Typescript, Python</span> and <span className="p-color font-bold text-xl">Java.</span> I love using <span className="p-color font-bold text-xl">React</span> and <span className="p-color font-bold text-xl">NextJS </span>to build web apps!</p>
+                    <p className="max-lg:text-base text-lg font-semibold">Proficient in <span className="max-lg:text-lg p-color font-bold text-xl">Typescript, Python</span> and <span className="max-lg:text-lg p-color font-bold text-xl">Java.</span> I love using <span className="max-lg:text-lg p-color font-bold text-xl">React</span> and <span className="max-lg:text-lg p-color font-bold text-xl">NextJS </span>to build web apps!</p>
                 </div>
-                <div></div>
-                <div></div>
+                {!isMobile && <div></div>}
+                {<div></div>}
                 <div className="relative overflow-hidden w-fit">
                     <motion.div ref={textRef} initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.4}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
-                    <p className="text-lg font-semibold">I used to be a Content Creator primarily making short-form video content.</p>
+                    <p className="max-lg:text-base text-lg font-semibold">I used to be a Content Creator primarily making short-form video content.</p>
                 </div>
-                <div></div>
-                <div></div>
+                {!isMobile && <div></div>}
+                {<div></div>}
                 <div className="relative overflow-hidden w-fit">
                     <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.5}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
-                    <p className="text-lg font-semibold">Feel free to message me on <a href="https://www.linkedin.com/in/aaron-h-hong/" target="_blank" className="text-xl font-bold relative inline-block p-color before:absolute before:left-0 before:bottom-0 before:w-0 before:h-[2px] before:bg-p before:transition-all before:duration-200 hover:before:w-full">LinkedIn!</a> I love connecting with people!</p>
+                    <p className="max-lg:text-base text-lg font-semibold">Feel free to message me on <a href="https://www.linkedin.com/in/aaron-h-hong/" target="_blank" className="max-lg:text-lg text-xl font-bold relative inline-block p-color before:absolute before:left-0 before:bottom-0 before:w-0 before:h-[2px] before:bg-p before:transition-all before:duration-200 hover:before:w-full">LinkedIn!</a> I love connecting with people!</p>
                 </div>
             </motion.div>
             

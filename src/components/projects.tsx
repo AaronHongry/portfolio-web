@@ -78,7 +78,7 @@ const Projects = () => {
         initial={{opacity: 0, y: 20}}
         animate={inContainerView ? {opacity: 1, y: 0} : {}}
         ref={containerRef}>
-            <div ref={projectRef} className="flex md:flex-row flex-col w-full card-background justify-center items-center lg:px-56 px-8 flex-wrap py-6 gap-4 z-20">
+            <div ref={projectRef} className="flex lg:flex-row flex-col w-full card-background justify-center items-center lg:px-56 px-8 flex-wrap py-6 gap-4 z-20">
                 {projects.map((project, index) => (
                     <motion.div
                     initial={{opacity: 0, x: -20}}

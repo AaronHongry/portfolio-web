@@ -78,7 +78,7 @@ const ProjectPop: React.FC<ProjectPopPros> = ({layoutCardId, name, description, 
                         <motion.h1 initial={{y: -5, opacity: 0}} animate={{y: 0, opacity: 1}} transition={{delay: 0.7}} className="lg:text-md text-xs font-bold">Frameworks / Languages Used:</motion.h1>
                         <div className="grid grid-cols-3 gap-2 justify-items-center">
                             {langUsed.map((lang, index) => (
-                                <motion.p initial={{x: -5, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{delay: 0.8 + (0.1 * index)}} key={`lang.${Date.now()}.${index}`} className={`${index % 3 < 2 ? "border-r-2" : ""} col-span-1 w-full text-center max-lg:text-sm`}>{lang}</motion.p>
+                                <motion.p initial={{x: -5, opacity: 0}} animate={{x: 0, opacity: 1}} transition={{delay: 0.8 + (0.1 * index)}} key={`lang.${Date.now()}.${index}`} className={`${index % 3 < 2 ? "border-r-2" : ""} col-span-1 w-full text-center max-lg:text-xs`}>{lang}</motion.p>
                             ))}
                         </div>
                     </div>

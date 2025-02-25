@@ -29,7 +29,7 @@ const Project: React.FC<ProjectProps> = ({layoutCardId, name, description, picUr
                 <motion.div className="h-2/3">
                     {picUrl.split(".").pop() == "mp4"
                     ? (
-                        <video src={`images/${picUrl}`} muted loop autoPlay className="w-full h-full object-cover"/>
+                        <video src={`images/${picUrl}`} muted loop autoPlay playsInline className="w-full h-full object-cover"/>
                     ) 
                     : (
                         <Image alt={`${name} Picture`} width={288} height={216} src={`/images/${picUrl}`} />

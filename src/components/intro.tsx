@@ -77,7 +77,7 @@ const Intro = () => {
 
     return (
         <div className="flex flex-col-reverse lg:flex-row lg:gap-2 gap-1 lg:h-4/5 lg:px-56 px-5">
-            <div className="flex flex-col lg:py-32 py-12 lg:w-1/2 w-full">
+            <div className="flex flex-col lg:py-32 py-4 lg:w-1/2 w-full">
                 <div className="flex flex-col lg:gap-3 lg:pt-8 max-lg:items-center">
                     <div className="flex flex-row items-baseline gap-3">
                         <motion.h1 initial={{opacity: 0, x: -10}} animate={{opacity: 1, x: 0}} transition={{ease: "easeOut", delay: 0.5}} className="lg:text-5xl text-3xl font-bold ">Hi there!</motion.h1>
