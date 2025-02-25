@@ -25,7 +25,7 @@ const Project: React.FC<ProjectProps> = ({layoutCardId, name, description, picUr
             transition={{ease: "anticipate", duration: 0.5}}
             className={`relative flex flex-col w-72 h-72 rounded-xl overflow-hidden transition-shadow shadow-md hover:shadow-2xl`}
             onClick={onClick}>
-                {/*<motion.div initial={{opacity: 0}} whileHover={{opacity: 0.1}} className="absolute w-full h-full bg-white z-20"/>*/}
+                {<motion.div initial={{opacity: 0}} whileHover={{opacity: 0.1}} className="absolute w-full h-full bg-white z-20"/>}
                 <motion.div className="h-2/3">
                     {picUrl.split(".").pop() == "mp4"
                     ? (
