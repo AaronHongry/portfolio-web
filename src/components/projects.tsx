@@ -27,7 +27,7 @@ const Projects = () => {
     const inContainerView = useInView(containerRef, {once: true, margin: "-100px"});
  
     const projectRef = useRef(null);
-    const isInView = useInView(projectRef, {once: true, margin: "-10px"});
+    const isInView = useInView(projectRef, {once: true, margin: "-130px"});
 
     const handleOpen = (project: ProjectType) => {
         setCurrentProject(project);
