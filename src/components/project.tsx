@@ -15,7 +15,7 @@ interface ProjectProps {
     onClick: () => void;
 }
 
-const Project: React.FC<ProjectProps> = ({layoutCardId, name, description, picUrl, onClick}) => {
+const Project: React.FC<ProjectProps> = ({layoutCardId, name, description, onClick}) => {
 
     return (
         <div className="relative">
