@@ -59,7 +59,7 @@ const ProjectPop: React.FC<ProjectPopPros> = ({layoutCardId, name, description, 
                         <motion.div initial={{opacity: 0, y: -10}} animate={{opacity: 1, y: 0}} transition={{delay: 0.4}} className="h-2/3 overflow-hidden rounded-lg">
                             {picUrl.split(".").pop() == "mp4"
                             ? (
-                                <video src={`images/${picUrl}`} muted loop autoPlay className="w-full h-full object-cover"/>
+                                <video src={`images/${picUrl}`} muted loop autoPlay playsInline className="w-full h-full object-cover"/>
                             ) 
                             : (
                                 <Image alt={`${name} Preview`} width={757} height={426} src={`images/${picUrl}`} />
