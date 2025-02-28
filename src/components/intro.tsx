@@ -96,7 +96,7 @@ const Intro = () => {
             </div>
 
             <motion.div initial={{scale: 0.3, opacity: 0}} animate={isMobile ? {scale: 1, opacity: 1, transition: {opacity: {delay: 0.8}, scale: {delay: 0.65}}} : {scale: 1, opacity: 1, transition: {opacity: {delay: 1.8}, scale: {delay: 1.7}}}} transition={{ease:"backOut"}} className="flex flex-col lg:pt-8 lg:w-1/2 max-lg:h-1/6 lg:justify-center items-center">
-                <motion.div transition={{ease: "backOut"}} whileHover={{scale: 1.1}} whileTap={{scale: 1.05}} ref={pfpScope} className="h-full w-full flex justify-center"><Image width={365} height={346} alt="Me" src="/images/pfp.webp" className="lg:w-3/4 lg:h-3/4 max-lg:h-1/5 max-lg:max-w-64 object-contain"/></motion.div>
+                <motion.div transition={{ease: "backOut"}} whileHover={{scale: 1.1}} whileTap={{scale: 1.05}} ref={pfpScope} className="h-full w-full flex justify-center"><Image width={365} height={346} alt="Me" src="/images/pfp.png" className="lg:w-3/4 lg:h-3/4 max-lg:h-1/5 max-lg:max-w-64 object-contain"/></motion.div>
             </motion.div>
         </div>
         
