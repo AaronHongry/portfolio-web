@@ -87,7 +87,7 @@ const AboutMe = () => {
                 
                 <div className="relative overflow-hidden w-fit">
                     <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.2}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
-                    <p className="max-lg:text-base text-lg font-semibold">{`I'm currently a 5th Year `}<span className="max-lg:text-lg p-color font-bold text-xl">Computer Science</span> Student, and an aspiring <span className="max-lg:text-lg p-color font-bold text-xl">Full-Stack Developer.</span></p>
+                    <p className="max-lg:text-base text-lg font-semibold">{`I'm currently a Web Developer `} at the <span className="max-lg:text-lg p-color font-bold text-xl">Ontairo Tech Student Union.</span></p>
                 </div>
                 <div className="relative overflow-hidden w-fit">
                     <motion.div initial={{left: 0}} animate={isInView ? {left: "100%"} : {}} transition={{duration: 0.5, ease: "easeOut", delay: 0.3}} className="absolute z-30 a-bg top-1 bottom-1 right-0 left-0"/>
